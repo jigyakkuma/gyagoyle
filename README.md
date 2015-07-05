@@ -11,3 +11,12 @@
 ```
 $ go get github.com/jigyakkuma/gyagoyle
 ```
+
+## Usage
+
+If you run in a terminal:
+```
+$ gyagoyle
+```
+
+It is convenient to register a shortcut on the menu.
