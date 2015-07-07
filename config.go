@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
 )
 
@@ -14,44 +14,33 @@ type Config struct {
 }
 
 func (config *Config) Init() {
-	var err error
-
 	config.IdFilename = "/.gyazo.id"
 
-	err = config.createHomeDir()
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
-	err = config.createHistDir()
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
-
+	config.createHomeDir()
+	config.createHistDir()
 	config.getGyazoId()
 }
 
-func (config *Config) createHomeDir() error {
+func (config *Config) createHomeDir() {
 	//home directory
 	config.HomeDir = os.Getenv("HOME") + "/.gyagoyle"
 	err := os.MkdirAll(config.HomeDir, 0777)
 	if err != nil {
-		return fmt.Errorf("error: make a home directory is failed(%v)", err)
+		log.Fatalf("Make a home directory is failed: %v", err)
 	}
 
-	return nil
+	return
 }
 
-func (config *Config) createHistDir() error {
+func (config *Config) createHistDir() {
 	//history directory
 	config.HistDir = config.HomeDir + "/history"
 	err := os.MkdirAll(config.HistDir, 0777)
 	if err != nil {
-		return fmt.Errorf("error: make a history directory is failed(%v)", err)
+		log.Fatalf("Make a history directory is failed: %v", err)
 	}
 
-	return nil
+	return
 }
 
 func (config *Config) getGyazoId() {

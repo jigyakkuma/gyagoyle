@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"os/exec"
 )
 
@@ -10,6 +10,6 @@ func (g *Gyazo) BrowserOpen() {
 	err := cmd.Run()
 
 	if err != nil {
-		fmt.Errorf("error: %v", err)
+		log.Fatalf("error: %v", err)
 	}
 }

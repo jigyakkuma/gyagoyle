@@ -1,9 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"io"
-	"os"
+	"log"
 	"os/exec"
 )
 
@@ -12,8 +11,7 @@ func (g *Gyazo) Xclip() {
 
 	stdin, err := cmd.StdinPipe()
 	if err != nil {
-		fmt.Errorf("error: %v", err)
-		os.Exit(1)
+		log.Fatalf("error: %v", err)
 	}
 
 	io.WriteString(stdin, g.ContentUrl)

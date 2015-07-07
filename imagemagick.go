@@ -1,9 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"io/ioutil"
-	"os"
+	"log"
 	"os/exec"
 	"time"
 )
@@ -18,21 +17,18 @@ func (g *Gyazo) CaptureImage() {
 		err = cmd.Run()
 
 		if err != nil {
-			fmt.Errorf("error: %v", err)
-			os.Exit(1)
+			log.Fatalf("error: %v", err)
 		}
 	} else {
 		tmpFile = g.FileName
 	}
 
 	if isExist(tmpFile) == false {
-		fmt.Errorf("error: Can't open image file")
-		os.Exit(1)
+		log.Fatalf("error: Can't open image file")
 	}
 
 	g.ImageBinary, err = ioutil.ReadFile(tmpFile)
 	if err != nil {
-		fmt.Errorf("error: %v", err)
-		os.Exit(1)
+		log.Fatalf("error: %v", err)
 	}
 }
