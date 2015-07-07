@@ -6,6 +6,10 @@
 
 [GYAZO](http://gyazo.com) 
 
+## Requirement
+
+This tool use a [ImageMagick](http://www.imagemagick.org/script/index.php) and xclip.
+
 ## Install
 
 ```
