@@ -9,7 +9,6 @@ import (
 type Gyazo struct {
 	ImageBinary []byte
 	Config      Config
-	Endpoint    string
 	FileName    string
 	ContentUrl  string
 }
@@ -17,17 +16,23 @@ type Gyazo struct {
 func main() {
 	var g Gyazo
 	var varFlag bool
+	var profile string
 	g.Config.Init()
 
 	//flag
-	flag.StringVar(&g.Endpoint, "endpoint", "http://gyazo.com/upload.cgi", "Set the original endpoint")
-	flag.StringVar(&g.FileName, "file", "", "Specify if you want to upload the captured file")
+	flag.StringVar(&g.Config.Endpoint, "endpoint", "http://gyazo.com/upload.cgi", "Set the original endpoint.")
+	flag.StringVar(&g.FileName, "file", "", "Specify if you want to upload the captured file.")
+	flag.StringVar(&profile, "profile", "", "Specify a profile to use the configuration toml file.")
 	flag.BoolVar(&varFlag, "version", false, "Display version")
 	flag.Parse()
 
 	if varFlag == true {
 		fmt.Println(Name, ": ", Version)
 		os.Exit(0)
+	}
+
+	if profile != "" {
+		g.Config.GetToml(profile)
 	}
 
 	g.Run()

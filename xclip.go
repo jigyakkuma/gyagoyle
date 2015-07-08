@@ -11,7 +11,7 @@ func (g *Gyazo) Xclip() {
 
 	stdin, err := cmd.StdinPipe()
 	if err != nil {
-		log.Fatalf("error: %v", err)
+		log.Fatalf("Pipe error: %v", err)
 	}
 
 	io.WriteString(stdin, g.ContentUrl)

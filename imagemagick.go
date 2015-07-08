@@ -17,7 +17,7 @@ func (g *Gyazo) CaptureImage() {
 		err = cmd.Run()
 
 		if err != nil {
-			log.Fatalf("error: %v", err)
+			log.Fatalf("ImageMagick import error: %v", err)
 		}
 	} else {
 		tmpFile = g.FileName
@@ -29,6 +29,6 @@ func (g *Gyazo) CaptureImage() {
 
 	g.ImageBinary, err = ioutil.ReadFile(tmpFile)
 	if err != nil {
-		log.Fatalf("error: %v", err)
+		log.Fatalf("Image file read error: %v", err)
 	}
 }

@@ -6,10 +6,14 @@ import (
 )
 
 func (g *Gyazo) BrowserOpen() {
+	if g.ContentUrl == "" {
+		return
+	}
+
 	cmd := exec.Command("xdg-open", g.ContentUrl)
 	err := cmd.Run()
 
 	if err != nil {
-		log.Fatalf("error: %v", err)
+		log.Fatalf("Browser open error: %v", err)
 	}
 }
