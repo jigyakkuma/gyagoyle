@@ -1,0 +1,6 @@
+[[profile]]
+name = "example.com"
+endpoint = "http://example.com/gyazo/upload"
+basicUser = "username"
+basicPassword = "password"
+
