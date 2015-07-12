@@ -3,6 +3,7 @@ package main
 import (
 	"io/ioutil"
 	"log"
+	"os"
 	"os/exec"
 	"time"
 )
@@ -30,5 +31,12 @@ func (g *Gyazo) CaptureImage() {
 	g.ImageBinary, err = ioutil.ReadFile(tmpFile)
 	if err != nil {
 		log.Fatalf("Image file read error: %v", err)
+	}
+
+	if g.NoSave == true {
+		err = os.Remove(tmpFile)
+		if err != nil {
+			log.Fatalf("Capture file delete error: %v", err)
+		}
 	}
 }

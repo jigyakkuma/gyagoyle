@@ -11,18 +11,19 @@ type Gyazo struct {
 	Config      Config
 	FileName    string
 	ContentUrl  string
+	NoSave      bool
 }
 
 func main() {
-	var g Gyazo
 	var varFlag bool
 	var profile string
-	g.Config.Init()
+	g := NewGyazo()
 
 	//flag
 	flag.StringVar(&g.Config.Endpoint, "endpoint", "http://gyazo.com/upload.cgi", "Set the original endpoint.")
 	flag.StringVar(&g.FileName, "file", "", "Specify if you want to upload the captured file.")
 	flag.StringVar(&profile, "profile", "", "Specify a profile to use the configuration toml file.")
+	flag.BoolVar(&g.NoSave, "no-save", false, "It is an option that does not save the image file to the history directory.")
 	flag.BoolVar(&varFlag, "version", false, "Display version")
 	flag.Parse()
 

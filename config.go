@@ -28,12 +28,15 @@ type Profiles struct {
 	Name          string `toml:"name"`
 }
 
-func (c *Config) Init() {
-	c.IdFilename = "/.gyazo.id"
+func NewGyazo() *Gyazo {
+	var g Gyazo
+	g.Config.IdFilename = "/.gyazo.id"
 
-	c.createHomeDir()
-	c.createHistDir()
-	c.getGyazoId()
+	g.Config.createHomeDir()
+	g.Config.createHistDir()
+	g.Config.getGyazoId()
+
+	return &g
 }
 
 func (c *Config) createHomeDir() {
