@@ -5,6 +5,5 @@ import (
 )
 
 func TestInit(t *testing.T) {
-	var config Config
-	config.Init()
+	_ = NewGyazo()
 }

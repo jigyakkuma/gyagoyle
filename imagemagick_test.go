@@ -5,11 +5,10 @@ import (
 )
 
 func TestCaptureImage(t *testing.T) {
-	var gyazo Gyazo
-	gyazo.Config.Init()
-	gyazo.CaptureImage()
+	g := NewGyazo()
+	g.CaptureImage()
 
-	gyazo.FileName = "test.png"
-	gyazo.CaptureImage()
+	g.FileName = "test.png"
+	g.CaptureImage()
 
 }

@@ -18,11 +18,10 @@ type MultiPart struct {
 }
 
 func (g *Gyazo) Upload() {
-	var mp MultiPart
-	mp.New(g)
+	mp := NewMuliPart(g)
 
 	// then, upload
-	res, err := g.Post(mp)
+	res, err := g.Post(*mp)
 	defer res.Body.Close()
 	if err != nil {
 		log.Fatalf("Post: %v", err)
@@ -43,7 +42,8 @@ func (g *Gyazo) Upload() {
 	g.Config.SetGyazoId(res.Header.Get("X-Gyazo-Id"))
 }
 
-func (m *MultiPart) New(g *Gyazo) {
+func NewMuliPart(g *Gyazo) *MultiPart {
+	var m MultiPart
 	m.writer = multipart.NewWriter(&m.buffer)
 	err := m.writer.WriteField("id", g.Config.GyazoId)
 	part, err := m.writer.CreateFormFile("imagedata", g.GetHost())
@@ -57,7 +57,7 @@ func (m *MultiPart) New(g *Gyazo) {
 	if err != nil {
 		log.Fatalf("Close: %v", err)
 	}
-	return
+	return &m
 }
 
 func (m *MultiPart) GetBody() io.Reader {
