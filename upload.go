@@ -55,7 +55,7 @@ func NewMuliPart(g *Gyazo) *MultiPart {
 	m.contentType = m.writer.FormDataContentType()
 	err = m.writer.Close()
 	if err != nil {
-		log.Fatalf("Close: %v", err)
+		log.Fatalf("Close writer: %v", err)
 	}
 	return &m
 }
