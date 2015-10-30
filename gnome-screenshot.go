@@ -8,17 +8,17 @@ import (
 	"time"
 )
 
-func (g *Gyazo) CaptureImageMagick() {
+func (g *Gyazo) CaptureGnomeScreenshot() {
 	var err error
 	tmpFile := g.Config.HistDir + "/" + time.Now().Format("20060102150405") + ".png"
 
 	if g.FileName == "" {
-		cmd := exec.Command("import", tmpFile)
+		cmd := exec.Command("gnome-screenshot", "-a", "-f", tmpFile)
 
 		err = cmd.Run()
 
 		if err != nil {
-			log.Fatalf("ImageMagick import error: %v", err)
+			log.Fatalf("gnome-screenshot error: %v", err)
 		}
 	} else {
 		tmpFile = g.FileName
