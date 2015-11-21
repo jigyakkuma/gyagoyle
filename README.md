@@ -1,6 +1,6 @@
 ## GYAZO client for Linux
 
-====
+[![wercker status](https://app.wercker.com/status/f5615d48864cf5abc373172a277c8c40/s "wercker status")](https://app.wercker.com/project/bykey/f5615d48864cf5abc373172a277c8c40)
 
 ## Discription
 
