@@ -8,7 +8,7 @@ Client tool for [GYAZO](http://gyazo.com)
 
 ## Requirement
 
-This tool use a [ImageMagick](http://www.imagemagick.org/script/index.php) and xclip.
+This tool use a [ImageMagick](http://www.imagemagick.org/script/index.php) or Gnome Screenshot, and xclip.
 
 ## Install
 
