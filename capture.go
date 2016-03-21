@@ -28,6 +28,9 @@ func (g *Gyazo) CaptureImage() {
 	case "gnome-screenshot":
 		command.captureCommand = "gnome-screenshot"
 		command.captureOption = []string{"-a", "-f", tmpFile}
+	case "spectacle":
+		command.captureCommand = "spectacle"
+		command.captureOption = []string{"-r", "-b", "-o", tmpFile}
 	default:
 		log.Fatalf("error:not found this capture option.")
 	}

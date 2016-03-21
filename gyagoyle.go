@@ -26,7 +26,7 @@ func main() {
 	flag.StringVar(&profile, "profile", "", "Specify a profile to use the configuration toml file.")
 	flag.BoolVar(&g.NoSave, "no-save", false, "It is an option that does not save the image file to the history directory.")
 	flag.BoolVar(&varFlag, "version", false, "Display version")
-	flag.StringVar(&g.CaptureModule, "capture", "imagemagick", "Specify the capture module.[imagemagick,gnome-screenshot]")
+	flag.StringVar(&g.CaptureModule, "capture", "imagemagick", "Specify the capture module.[imagemagick,gnome-screenshot,spectacle]")
 	flag.Parse()
 
 	if varFlag == true {
